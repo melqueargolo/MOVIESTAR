@@ -68,7 +68,11 @@ if ($type === "update") {
 }else if($type ==="changePassword"){
     $password        = filter_input(INPUT_POST,"password");
     $confirmPassword = filter_input(INPUT_POST,"confirmPassword");
-    $id              = filter_input(INPUT_POST,"id");
+
+    //resgatar dados do usuario
+    $userData = $userDao->verifyToken();
+
+    $id = $userData->id;
 
     //verifica se as senhas são iguais
     if ($password === $confirmPassword) {

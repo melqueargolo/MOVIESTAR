@@ -58,7 +58,7 @@ $userData= $userDao->verifyToken(false);
                   <?php if($userData):?>
                     
                       <li class="nav-item">
-                      <a href="<?php $BASE_URL ?>newmovie.php" class="nav-link"><i class="far fa-plus-square ">
+                      <a href="<?php $BASE_URL ?>newMovie.php" class="nav-link"><i class="far fa-plus-square ">
                       </i>Incluir Filme</a>
                       </li>
                       <li class="nav-item">
