@@ -62,7 +62,7 @@ $userData= $userDao->verifyToken(false);
                       </i>Incluir Filme</a>
                       </li>
                       <li class="nav-item">
-                      <a href="<?php $BASE_URL ?>dashboard.php" class="nav-link">Meus Filmes</a>
+                      <a href="<?php $BASE_URL ?>movie_card.php" class="nav-link">Meus Filmes</a>
                       </li>
                       <li class="nav-item">
                       <a href="<?php $BASE_URL ?>edit_profile.php" class="nav-link bold"><?= $userData->name ?></a>
