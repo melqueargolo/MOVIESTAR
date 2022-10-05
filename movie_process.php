@@ -60,7 +60,7 @@ if ($type === "create") {
                 //gera o nome da imagem
                 $imageName = $movie->imageGenerateName();
     
-                imagejpeg($imageFile,"./Img/Users/".$imageName, 100); 
+                imagejpeg($imageFile,"./Img/Movies/".$imageName, 100); 
     
                 $movie->image = $imageName;
 

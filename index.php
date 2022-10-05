@@ -18,7 +18,7 @@
     <p class="section-description">Veja as críticas dos últimos filmes adicionados no MovieStar</p>
     <div class="movies-container">
       <?php foreach($latestMovies as $movie): ?>
-        <?php require("Templates/movie_card.php"); ?>
+        <?= require("Templates/movie_card.php"); ?>
       <?php endforeach; ?>
       <?php if(count($latestMovies) === 0): ?>
         <p class="empty-list">Ainda não há filmes cadastrados!</p>
@@ -28,7 +28,7 @@
     <p class="section-description">Veja os melhores filmes de ação</p>
     <div class="movies-container">
       <?php foreach($actionMovies as $movie): ?>
-        <?php require("Templates/movie_card.php"); ?>
+        <?= require("Templates/movie_card.php"); ?>
       <?php endforeach; ?>
       <?php if(count($actionMovies) === 0): ?>
         <p class="empty-list">Ainda não há filmes de ação cadastrados!</p>
@@ -38,7 +38,7 @@
     <p class="section-description">Veja os melhores filmes de comédia</p>
     <div class="movies-container">
       <?php foreach($comedyMovies as $movie): ?>
-        <?php require("Templates/movie_card.php"); ?>
+        <?= require("Templates/movie_card.php"); ?>
       <?php endforeach; ?>
       <?php if(count($comedyMovies) === 0): ?>
         <p class="empty-list">Ainda não há filmes de comédia cadastrados!</p>

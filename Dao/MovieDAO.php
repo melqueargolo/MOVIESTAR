@@ -4,6 +4,7 @@ require_once "Models/Movie.php";
 require_once "Models/Message.php";
 
 //review DAO
+//require_once("dao/ReviewDAO.php");
 
 class MovieDAO implements MovieDAOInterface
 {
@@ -31,8 +32,16 @@ class MovieDAO implements MovieDAOInterface
         $movie->category    = $data["category"];
         $movie->length      = $data["length"];
         $movie->user_id     = $data["user_id"];
-        
+
+         // Recebe as ratings do filme
+        // $reviewDao = new ReviewDao($this->conn, $this->url);
+
+        // $rating = $reviewDao->getRatings($movie->id);
+
+        // $movie->rating = $rating;
+
         return $movie;
+    
     }
 
     public function findAll(){
@@ -41,21 +50,28 @@ class MovieDAO implements MovieDAOInterface
     }
 
     public function getLatestMovies(){
+
+        $movies = [];
+
         $stmt = $this->conn->query("SELECT * FROM movies ORDER BY id DESC");
+
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
             $moviesArray = $stmt->fetchAll();
 
             foreach($moviesArray as $movie){
-                $movie[] = $this->buildMovie($movie);
-            };
+                $movies[] = $this->buildMovie($movie);
+            }
         }
 
-        return $movie;
+        return $movies;
     }
 
     public function getMoviesByCategory($category){
+
+        $movies = [];
+
         $stmt = $this->conn->prepare("SELECT * FROM movies WHERE category = :category ORDER BY id DESC");
 
         $stmt->bindParam(":category", $category);
@@ -67,7 +83,7 @@ class MovieDAO implements MovieDAOInterface
 
             foreach($moviesArray as $movie){
                 $movies[] = $this->buildMovie($movie);
-            };
+            }
         }
 
         return $movies;
@@ -75,10 +91,49 @@ class MovieDAO implements MovieDAOInterface
 
     public function getMoviesByUserId($id){
 
+        $movies = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM movies WHERE user_id = :user_id");
+                                     
+  
+        $stmt->bindParam(":user_id", $id);
+  
+        $stmt->execute();
+  
+        if($stmt->rowCount() > 0) {
+  
+          $moviesArray = $stmt->fetchAll();
+  
+          foreach($moviesArray as $movie) {
+            $movies[] = $this->buildMovie($movie);
+          }
+  
+        }
+  
+        return $movies;
     }
 
     public function findById($id){
+        $movie = [];
 
+        $stmt = $this->conn->prepare("SELECT * FROM movies WHERE id = :id");
+                                     
+  
+        $stmt->bindParam(":id", $id);
+  
+        $stmt->execute();
+  
+        if($stmt->rowCount() > 0) {
+  
+          $movieData = $stmt->fetch();
+
+          $movie = $this->buildMovie($movieData);
+
+          return $movie;
+
+        }else {
+            return false;
+        }
     }
 
     public function findByTitle($title){

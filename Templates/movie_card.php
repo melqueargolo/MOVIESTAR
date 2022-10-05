@@ -1,16 +1,20 @@
 <?php
-    
+  
+
+  
   if(empty($movie->image)) {
     $movie->image = "movie_cover.jpg";
   }
 
 ?>
+
 <div class="card movie-card">
-  <div class="card-img-top" style="background-image: url('<?php $BASE_URL ?>Img/Movies/<?php "$movie->image" ?>')"></div>
+  <div class="card-img-top" style="background-image: url('Img/Movies/<?= $movie->image ?>')"></div>
+
   <div class="card-body">
     <p class="card-rating">
       <i class="fas fa-star"></i>
-      <span class="rating"><?= $movie->rating ?></span>
+      <span class="rating">9</span> <!--<?= $movie->rating ?> -->
     </p>
     <h5 class="card-title">
       <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
