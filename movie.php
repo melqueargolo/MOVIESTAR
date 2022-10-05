@@ -47,7 +47,7 @@
     }
 
     // Resgatar as revies do filme
-    $alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
+    //$alreadyReviewed = $reviewDao->hasAlreadyReviewed($id, $userData->id);
  
   }
 
@@ -74,6 +74,7 @@
     </div>
     <div class="offset-md-1 col-md-10" id="reviews-container">
       <h3 id="reviews-title">Avaliações:</h3>
+
       <!-- Verifica se habilita a review para o usuário ou não -->
       <?php if(!empty($userData) && !$userOwnsMovie && !$alreadyReviewed): ?>
       <div class="col-md-12" id="review-form-container">
@@ -106,6 +107,7 @@
         </form>
       </div>
       <?php endif; ?>
+
       <!-- Comentários -->
       <?php foreach($movieReviews as $review): ?>
         <?php require("Templates/user_review.php"); ?>

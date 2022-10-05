@@ -76,6 +76,26 @@ if ($type === "create") {
         $message->setMessage("Você precisa adicionar pelo menos: titulo, descrição e categoria.","error","back");
     }
     
+}elseif ($type === "delete") {
+    $id = filter_input(INPUT_POST, "id");
+
+    $movie = $movieDAO->findById($id);
+
+   
+    if ($movie) {
+        //verifica se o filme e do usuario
+        if ($movie->user_id === $userData->id) {
+            $movieDAO->destroy($movie->id);
+        } else {
+            $message->setMessage("Informações invalidas ","error","index.php");
+
+        }
+        
+
+    }else {
+        $message->setMessage("Informações invalidas!","error","index.php");
+
+    }
 
     
 
