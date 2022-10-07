@@ -1,6 +1,6 @@
 <?php 
 
-class movie
+class Movie
 {
     public $id;
     public $title;
@@ -9,7 +9,7 @@ class movie
     public $trailer;
     public $category;
     public $length;
-    public $users_id;
+    public $user_id;
   
 
     public function imageGenerateName(){
