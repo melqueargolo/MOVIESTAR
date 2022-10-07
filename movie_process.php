@@ -101,6 +101,7 @@ if ($type === "create") {
     
 } elseif($type === "update") { 
     
+    
     // Receber os dados dos inputs
     $title       = filter_input(INPUT_POST, "title");
     $description = filter_input(INPUT_POST, "description");
@@ -149,7 +150,7 @@ if ($type === "create") {
 
                 $imageName = $movie->imageGenerateName();
 
-                imagejpeg($imageFile, "./img/movies/" . $imageName, 100);
+                imagejpeg($imageFile, "./Img/Movies/" . $imageName, 100);
 
                 $movieData->image = $imageName;
 
@@ -162,10 +163,6 @@ if ($type === "create") {
             }
 
             $movieDAO->update($movieData);
-
-            echo '<pre>';
-            print_r($movieData);
-            echo '</pre>';
 
         } else {
 

@@ -162,14 +162,10 @@ class MovieDAO implements MovieDAOInterface
     public function update(Movie $movie){
 
         echo '<pre>';
-        print_r($movie);
+        print_r($movie->title);
         echo '</pre>';
 
-        echo '<pre>';
-        var_dump($movie);
-        echo '</pre>';
-
-        $stmt = $this->conn->prepare("UPDATE FROM `movies` SET 
+        $stmt = $this->conn->prepare("UPDATE `movies` SET 
         title       = :title,
         description = :description,
         image       = :image,
@@ -178,7 +174,6 @@ class MovieDAO implements MovieDAOInterface
         length      = :length
         WHERE id    = :id
         ");
-
 
         $stmt->bindParam(":title",$movie->title);
         $stmt->bindParam(":description",$movie->description);
