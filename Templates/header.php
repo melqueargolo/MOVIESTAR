@@ -40,7 +40,7 @@ $userData= $userDao->verifyToken(false);
 <body>
 <header>
     <nav id="main-navbar" class="navbar navbar-expand-lg">
-      <a href="#" class="navbar-brand">
+      <a href="index.php" class="navbar-brand">
         <img src="Img/logo.svg" alt="MovieStar" id="logo">
         <span id="moviestar-title">MovieStar</span>
       </a>
